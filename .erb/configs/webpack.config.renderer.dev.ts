@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const port = process.env.PORT || 1212;
 const manifest = path.resolve(webpackPaths.dllPath, 'renderer.json');
-const requiredByDLLConfig = module.parent.filename.includes(
+const requiredByDLLConfig = module.parent?.filename.includes(
   'webpack.config.renderer.dev.dll'
 );
 
@@ -54,8 +54,6 @@ export default merge(baseConfig, {
 
   output: {
     path: webpackPaths.distRendererPath,
-    publicPath: '/',
-    filename: 'renderer.dev.js',
     library: {
       type: 'umd',
     },
@@ -65,6 +63,7 @@ export default merge(baseConfig, {
     rules: [
       {
         test: /\.s?css$/,
+        // @ts-ignore
         use: [
           'style-loader',
           {
@@ -81,22 +80,26 @@ export default merge(baseConfig, {
       },
       {
         test: /\.s?css$/,
+        // @ts-ignore
         use: ['style-loader', 'css-loader', 'sass-loader'],
         exclude: /\.module\.s?(c|a)ss$/,
       },
       // Fonts
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        // @ts-ignore
         type: 'asset/resource',
       },
       // Images
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        // @ts-ignore
         type: 'asset/resource',
       },
     ],
   },
   plugins: [
+    // @ts-ignore
     requiredByDLLConfig
       ? null
       : new webpack.DllReferencePlugin({
@@ -105,6 +108,7 @@ export default merge(baseConfig, {
           sourceType: 'var',
         }),
 
+    // @ts-ignore
     new webpack.NoEmitOnErrorsPlugin(),
 
     /**
@@ -123,12 +127,15 @@ export default merge(baseConfig, {
       NODE_ENV: 'development',
     }),
 
+    // @ts-ignore
     new webpack.LoaderOptionsPlugin({
       debug: true,
     }),
 
+    // @ts-ignore
     new ReactRefreshWebpackPlugin(),
 
+    // @ts-ignore
     new HtmlWebpackPlugin({
       filename: path.join('index.html'),
       template: path.join(webpackPaths.srcRendererPath, 'index.ejs'),
@@ -168,6 +175,7 @@ export default merge(baseConfig, {
         env: process.env,
         stdio: 'inherit',
       })
+        // @ts-ignore
         .on('close', (code) => process.exit(code))
         .on('error', (spawnError) => console.error(spawnError));
     },
