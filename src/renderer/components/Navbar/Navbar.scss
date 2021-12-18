@@ -1,0 +1,63 @@
+.navbar {
+  flex: 0 0 200px;
+  ul {
+    margin: 0;
+    padding-left: 10px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      background: rgba(0,0,0,.2);
+      left: 8px;
+      top: 0;
+    }
+  }
+}
+
+.category-btn {
+  width: 100%;
+  display: flex;
+  background: transparent;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.note-entry {
+  font-size: 15px;
+  display: block;
+  margin: 0;
+  padding: 2px 10px;
+  color: black;
+}
+
+.add-category {
+  &-btn {
+    width: 100%;
+    display: flex;
+    background: transparent;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  &-input {
+    width: 100%;
+    border: none;
+    background: none;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px 0;
+    padding: 0 10px;
+    margin: 8px 0;
+    &::placeholder {
+      color: rgba(0,0,0,.2);
+    }
+  }
+}
