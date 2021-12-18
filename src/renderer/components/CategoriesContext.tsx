@@ -6,33 +6,31 @@ const initialState: Category[] = [
     id: '1',
     name: 'Gucci',
     notes: ['1'],
-    subcategories: [
-      {
-        id: '2',
-        name: 'Pongo',
-        notes: ['1'],
-        subcategories: [],
-      },
-      {
-        id: '3',
-        name: 'Cust ref',
-        notes: ['1'],
-        subcategories: [],
-      },
-    ],
+    fatherCategory: 'ROOT',
+  },
+  {
+    id: '2',
+    name: 'Pongo',
+    notes: ['1'],
+    fatherCategory: '1',
+  },
+  {
+    id: '3',
+    name: 'Cust ref',
+    notes: ['1'],
+    fatherCategory: '1',
   },
   {
     id: '4',
     name: 'Sopra',
     notes: [],
-    subcategories: [
-      {
-        id: '5',
-        name: 'PoC',
-        notes: ['2'],
-        subcategories: [],
-      },
-    ],
+    fatherCategory: 'ROOT',
+  },
+  {
+    id: '5',
+    name: 'PoC',
+    notes: ['2'],
+    fatherCategory: '2',
   },
 ];
 

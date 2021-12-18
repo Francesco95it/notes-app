@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { baseFatherCategory } from 'renderer/constants';
 import { useCategories } from '../CategoriesContext';
 
-export default function CreateCategory() {
+export default function CreateRootCategory() {
   const [addInputToggle, setAddInputToggle] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const { categories, setCategories } = useCategories();
@@ -10,7 +11,7 @@ export default function CreateCategory() {
     const newCategory = {
       id: `${Date.now()}`,
       name: categoryName,
-      subcategories: [],
+      fatherCategory: baseFatherCategory,
       notes: [],
     };
     setCategories([...categories, newCategory]);

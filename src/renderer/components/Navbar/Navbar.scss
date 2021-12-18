@@ -25,6 +25,14 @@
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
+  &-wrapper {
+    position: relative;
+    &:hover {
+      .entry-delete-btn {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .note-entry {
@@ -33,6 +41,27 @@
   margin: 0;
   padding: 2px 10px;
   color: black;
+  &-wrapper {
+    position: relative;
+    &:hover {
+      .entry-delete-btn {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.entry-delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
 }
 
 .add-category {

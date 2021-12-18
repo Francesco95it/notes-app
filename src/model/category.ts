@@ -4,7 +4,7 @@ type Category = {
   id: string;
   name: string;
   notes: Note['id'][];
-  subcategories: Category[];
+  fatherCategory: string;
 };
 
 export default Category;

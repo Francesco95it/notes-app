@@ -1,6 +1,6 @@
 import CategorysContextWrapper from '../CategoriesContext';
 import CategoriesTree from './CategoriesTree';
-import CreateCategory from './CreateCategory';
+import CreateRootCategory from './CreateRootCategory';
 import './Navbar.scss';
 
 export default function Navbar() {
@@ -8,7 +8,7 @@ export default function Navbar() {
     <div className="navbar">
       <CategorysContextWrapper>
         <CategoriesTree />
-        <CreateCategory />
+        <CreateRootCategory />
       </CategorysContextWrapper>
     </div>
   );
