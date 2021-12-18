@@ -28,7 +28,8 @@
   &-wrapper {
     position: relative;
     &:hover {
-      .entry-delete-btn {
+      .entry-delete-btn,
+      .add-note-btn {
         opacity: 1;
       }
     }
@@ -54,7 +55,23 @@
 .entry-delete-btn {
   position: absolute;
   right: 10px;
-  top: 0;
+  top: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  &__note {
+    top: 0;
+  }
+}
+
+.add-note-btn {
+  position: absolute;
+  right: 30px;
+  top: 3px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;

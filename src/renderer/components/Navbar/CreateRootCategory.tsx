@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { baseFatherCategory } from 'renderer/constants';
+import { baseFatherCategory } from '../../constants';
 import { useCategories } from '../CategoriesContext';
 
 export default function CreateRootCategory() {

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Category from 'model/category';
 import { useNotes } from '../Note/NotesContext';
 import { useCategories } from '../CategoriesContext';
+import CreateNewNote from '../Note/CreateNewNote';
 
 const DeleteCategoryBtn = ({ categoryId }: { categoryId: string }) => {
   const { categories, setCategories } = useCategories();
@@ -48,7 +49,11 @@ const DeleteNoteBtn = ({
   };
 
   return (
-    <button type="button" className="entry-delete-btn" onClick={onClick}>
+    <button
+      type="button"
+      className="entry-delete-btn entry-delete-btn__note"
+      onClick={onClick}
+    >
       x
     </button>
   );
@@ -72,6 +77,7 @@ export default function CategoryLink({ category }: Props) {
         <button type="button" className="category-btn" onClick={toggleCategory}>
           {category.name}
         </button>
+        <CreateNewNote category={category} />
         <DeleteCategoryBtn categoryId={category.id} />
       </div>
       {(childCategores.length > 0 || category.notes.length > 0) && (
