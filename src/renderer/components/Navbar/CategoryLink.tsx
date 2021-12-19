@@ -65,16 +65,50 @@ type Props = {
 
 export default function CategoryLink({ category }: Props) {
   const { notes } = useNotes();
-  const { categories } = useCategories();
+  const { categories, setCategories } = useCategories();
   const childCategores = categories.filter(
     (otherCategory) => otherCategory.fatherCategory === category.id
   );
   // TODO: implement toggleCategory
   const toggleCategory = () => {};
+
+  const onDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const categoryId = e.dataTransfer.getData('categoryId');
+    if (categoryId) {
+      const foundCategory = categories.find(
+        (currCategory) => currCategory.id === categoryId
+      );
+      if (foundCategory) {
+        const modifiedCategory = {
+          ...foundCategory,
+          fatherCategory: category.id,
+        };
+        const otherCategories = categories.filter(
+          (currCategory) => currCategory.id !== categoryId
+        );
+        const newCategories = [...otherCategories, modifiedCategory];
+        setCategories(newCategories);
+      }
+    }
+  };
+
   return (
     <li>
-      <div className="category-btn-wrapper">
-        <button type="button" className="category-btn" onClick={toggleCategory}>
+      <div
+        className="category-btn-wrapper"
+        onDropCapture={onDrop}
+        onDragOver={(e) => e.preventDefault()}
+      >
+        <button
+          draggable
+          onDragStart={(e) => {
+            e.dataTransfer.setData('categoryId', category.id);
+          }}
+          type="button"
+          className="category-btn"
+          onClick={toggleCategory}
+        >
           {category.name}
         </button>
         <CreateNewNote category={category} />

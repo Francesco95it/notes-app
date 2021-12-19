@@ -16,3 +16,29 @@
   height: 100%;
   overflow: scroll;
 }
+
+.note-tags {
+  margin: 0 0 10px;
+  .react-tag-input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, .2);
+    &__tag {
+      border-radius: 1000px;
+      overflow: hidden;
+      background: white;
+      font-size: 12px;
+      font-weight: 600;
+      &__content {
+        padding: 0 6px 0 9px;
+      }
+      &__remove {
+        background: linear-gradient(89deg, #f3aa5a, #a33d96);
+        &::after,
+        &::before {
+          background: white;
+        }
+      }
+    }
+  }
+}

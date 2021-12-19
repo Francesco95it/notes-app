@@ -36,7 +36,7 @@ const initialState: Category[] = [
 
 type CategoryContextType = {
   categories: Category[];
-  setCategories: React.Dispatch<React.SetStateAction<Category[]>>;
+  setCategories: (categories: Category[]) => void;
 };
 
 export const CategoriesContext = React.createContext<CategoryContextType>({
@@ -48,9 +48,19 @@ export const useCategories = () => {
 };
 
 const CategoriesContextWrapper: React.FC = ({ children }) => {
-  const [categories, setCategories] = useState(initialState);
+  const [categories, setCategories] = useState(
+    window.electron.store.get('categories') ?? initialState
+  );
+
+  const setAndSaveCategories = (newCategories: Category[]) => {
+    setCategories(newCategories);
+    window.electron.store.set('categories', newCategories);
+  };
+
   return (
-    <CategoriesContext.Provider value={{ categories, setCategories }}>
+    <CategoriesContext.Provider
+      value={{ categories, setCategories: setAndSaveCategories }}
+    >
       {children}
     </CategoriesContext.Provider>
   );

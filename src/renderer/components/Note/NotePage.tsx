@@ -1,8 +1,9 @@
 import Note from 'model/note';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useNotes } from './NotesContext';
 import './NotePage.scss';
+import NoteTags from './NoteTags';
 
 type RouteParams = {
   id: string;
@@ -13,6 +14,26 @@ export default function NotePage() {
   const { notes, setNotes } = useNotes();
   const [localNote, setLocalNote] = useState<Note | undefined>();
 
+  const updateNote = useCallback(() => {
+    if (localNote) {
+      const otherNotes = notes.filter((note) => note.id !== id);
+      setNotes([...otherNotes, localNote]);
+    }
+  }, [localNote, notes, setNotes, id]);
+
+  const updateTags = (newTags: string[]) => {
+    if (localNote) {
+      const otherNotes = notes.filter((note) => note.id !== id);
+      setNotes([
+        ...otherNotes,
+        {
+          ...localNote,
+          tags: newTags,
+        },
+      ]);
+    }
+  };
+
   useEffect(() => {
     const foundNote = notes.find((note) => note.id === id);
     setLocalNote(foundNote);
@@ -21,11 +42,6 @@ export default function NotePage() {
   if (!localNote) {
     return <h2>Note not found</h2>;
   }
-
-  const updateNote = () => {
-    const otherNotes = notes.filter((note) => note.id !== id);
-    setNotes([...otherNotes, localNote]);
-  };
 
   return (
     <>
@@ -41,6 +57,7 @@ export default function NotePage() {
           })
         }
       />
+      <NoteTags tags={localNote.tags} onChange={updateTags} />
       <textarea
         className="note-content"
         value={localNote.content}

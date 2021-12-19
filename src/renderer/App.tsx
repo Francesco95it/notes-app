@@ -4,6 +4,17 @@ import NotePage from './components/Note/NotePage';
 import NotesContextWrapper from './components/Note/NotesContext';
 import './App.scss';
 
+declare global {
+  interface Window {
+    electron: {
+      store: {
+        get: (key: string) => any;
+        set: (key: string, val: any) => void;
+      };
+    };
+  }
+}
+
 export default function App() {
   return (
     <div className="wrapper">

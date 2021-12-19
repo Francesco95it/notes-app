@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Note from 'model/note';
+import Store from 'electron-store';
 
 const initialState: Note[] = [
   {
@@ -22,7 +23,7 @@ const initialState: Note[] = [
 
 type NoteContextType = {
   notes: Note[];
-  setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
+  setNotes: (notes: Note[]) => void;
 };
 
 export const NotesContext = React.createContext<NoteContextType>({
@@ -34,9 +35,17 @@ export const useNotes = () => {
 };
 
 const NotesContextWrapper: React.FC = ({ children }) => {
-  const [notes, setNotes] = useState(initialState);
+  const [notes, setNotes] = useState(
+    window.electron.store.get('notes') ?? initialState
+  );
+
+  const setAndSaveNotes = (newNotes: Note[]) => {
+    setNotes(newNotes);
+    window.electron.store.set('notes', newNotes);
+  };
+
   return (
-    <NotesContext.Provider value={{ notes, setNotes }}>
+    <NotesContext.Provider value={{ notes, setNotes: setAndSaveNotes }}>
       {children}
     </NotesContext.Provider>
   );
