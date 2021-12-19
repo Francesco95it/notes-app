@@ -49,12 +49,12 @@ export const useCategories = () => {
 
 const CategoriesContextWrapper: React.FC = ({ children }) => {
   const [categories, setCategories] = useState(
-    window.electron.store.get('categories') ?? initialState
+    window.electron.store.getCategories('categories') ?? initialState
   );
 
   const setAndSaveCategories = (newCategories: Category[]) => {
     setCategories(newCategories);
-    window.electron.store.set('categories', newCategories);
+    window.electron.store.setCategories('categories', newCategories);
   };
 
   return (

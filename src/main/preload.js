@@ -21,11 +21,18 @@ contextBridge.exposeInMainWorld('electron', {
     },
   },
   store: {
-    get(val) {
+    getNotes(val) {
       const res = ipcRenderer.sendSync('electron-store-get', val);
       return res;
     },
-    set(property, val) {
+    setNotes(property, val) {
+      ipcRenderer.send('electron-store-set', property, val);
+    },
+    getCategories(val) {
+      const res = ipcRenderer.sendSync('electron-store-get', val);
+      return res;
+    },
+    setCategories(property, val) {
       ipcRenderer.send('electron-store-set', property, val);
     },
     // Other method you want to add like has(), reset(), etc.

@@ -35,12 +35,12 @@ export const useNotes = () => {
 
 const NotesContextWrapper = ({ children }: { children: React.ReactNode }) => {
   const [notes, setNotes] = useState(
-    window.electron.store.get('notes') ?? initialState
+    window.electron.store.getNotes('notes') ?? initialState
   );
 
   const setAndSaveNotes = (newNotes: Note[]) => {
     setNotes(newNotes);
-    window.electron.store.set('notes', newNotes);
+    window.electron.store.setNotes('notes', newNotes);
   };
 
   return (
