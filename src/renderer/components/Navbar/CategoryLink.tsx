@@ -122,7 +122,7 @@ export default function CategoryLink({ category }: Props) {
               return null;
             }
             return (
-              <li className="note-entry-wrapper">
+              <li key={noteId} className="note-entry-wrapper">
                 <Link key={noteId} to={`/${noteId}`} className="note-entry">
                   {foundNote.title}
                 </Link>
