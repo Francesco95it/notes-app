@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import Note from 'model/note';
-import Store from 'electron-store';
 
 const initialState: Note[] = [
   {
@@ -34,7 +33,7 @@ export const useNotes = () => {
   return useContext(NotesContext);
 };
 
-const NotesContextWrapper: React.FC = ({ children }) => {
+const NotesContextWrapper = ({ children }: { children: React.ReactNode }) => {
   const [notes, setNotes] = useState(
     window.electron.store.get('notes') ?? initialState
   );

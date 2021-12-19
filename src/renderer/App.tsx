@@ -1,4 +1,5 @@
 import { MemoryRouter as Router, Switch, Route } from 'react-router-dom';
+import Note from 'model/note';
 import Navbar from './components/Navbar/Navbar';
 import NotePage from './components/Note/NotePage';
 import NotesContextWrapper from './components/Note/NotesContext';
@@ -8,8 +9,8 @@ declare global {
   interface Window {
     electron: {
       store: {
-        get: (key: string) => any;
-        set: (key: string, val: any) => void;
+        get: (key: string) => Note[];
+        set: (key: string, val: Note[]) => void;
       };
     };
   }
