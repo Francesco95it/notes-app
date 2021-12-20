@@ -4,33 +4,9 @@ import React, { useContext, useState } from 'react';
 const initialState: Category[] = [
   {
     id: '1',
-    name: 'Gucci',
+    name: 'Test category',
     notes: ['1'],
     fatherCategory: 'ROOT',
-  },
-  {
-    id: '2',
-    name: 'Pongo',
-    notes: ['1'],
-    fatherCategory: '1',
-  },
-  {
-    id: '3',
-    name: 'Cust ref',
-    notes: ['1'],
-    fatherCategory: '1',
-  },
-  {
-    id: '4',
-    name: 'Sopra',
-    notes: [],
-    fatherCategory: 'ROOT',
-  },
-  {
-    id: '5',
-    name: 'PoC',
-    notes: ['2'],
-    fatherCategory: '2',
   },
 ];
 

@@ -4,6 +4,7 @@ import Category from 'model/category';
 import Navbar from './components/Navbar/Navbar';
 import NotePage from './components/Note/NotePage';
 import NotesContextWrapper from './components/Note/NotesContext';
+import SearchOverlay from './components/Search/SearchOverlay';
 import './App.scss';
 
 declare global {
@@ -31,6 +32,7 @@ export default function App() {
               <Route exact path="/" component={() => <h2>Select a note</h2>} />
             </div>
           </Switch>
+          <SearchOverlay />
         </Router>
       </NotesContextWrapper>
     </div>

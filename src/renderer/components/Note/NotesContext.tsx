@@ -4,16 +4,8 @@ import Note from 'model/note';
 const initialState: Note[] = [
   {
     id: '1',
-    title: 'Note del',
-    content: 'Note 1 content',
-    tags: ['tag1', 'tag2'],
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: '2',
-    title: 'Boh',
-    content: 'Note 1 content',
+    title: 'Test note',
+    content: 'Test note content',
     tags: ['tag1', 'tag2'],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
