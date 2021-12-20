@@ -31,7 +31,7 @@
   },
   "build": {
     "productName": "Notes App",
-    "appId": "org.erb.NotesApp",
+    "appId": "org.francesco95it.NotesApp",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
@@ -89,7 +89,7 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "notes-app",
+      "owner": "Francesco95it",
       "repo": "notes-app"
     }
   },

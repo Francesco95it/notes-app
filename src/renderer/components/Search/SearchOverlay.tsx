@@ -2,7 +2,7 @@ import Note from 'model/note';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useHistory } from 'react-router';
-import Search from 'renderer/Icons/Search';
+import Search from '../../Icons/Search';
 import { useNotes } from '../Note/NotesContext';
 import './SearchOverlay.scss';
 
